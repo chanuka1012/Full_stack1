@@ -23,12 +23,7 @@ public class UserController {
     @Autowired
      private UserService userService;
   
-    @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllUsers(){
-       
-        List<User> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
-    }
+    
        
     
     @PostMapping("/register")
