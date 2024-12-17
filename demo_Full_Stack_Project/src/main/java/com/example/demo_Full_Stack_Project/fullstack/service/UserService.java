@@ -24,4 +24,13 @@ public class UserService {
 		return userRepo.findAll();
 	}
 
+    public User authenticateUser(String email, String password) {
+        User user = userRepo.findByEmail(email);
+
+        if (user != null && user.getPassword().equals(password)) {
+        return user;
+    }
+        return null;
+    }
+
 }
