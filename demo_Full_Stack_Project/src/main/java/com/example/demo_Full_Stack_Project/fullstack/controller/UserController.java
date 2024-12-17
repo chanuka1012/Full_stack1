@@ -31,11 +31,11 @@ public class UserController {
      }
        
     
-    @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user){
-        User RegisteredUser = userService.RegisterUser(user);
-        return ResponseEntity.ok(RegisteredUser);
-    }
+    // @PostMapping("/register")
+    // public ResponseEntity<User> register(@RequestBody User user){
+    //     User RegisteredUser = userService.RegisterUser(user);
+    //     return ResponseEntity.ok(RegisteredUser);
+    // }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user)
