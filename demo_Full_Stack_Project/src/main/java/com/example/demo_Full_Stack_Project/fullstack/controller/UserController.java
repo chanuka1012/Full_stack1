@@ -23,14 +23,19 @@ public class UserController {
     @Autowired
      private UserService userService;
   
-    
+     @GetMapping("/all")
+     public ResponseEntity<List<User>> getAllUsers(){
+        
+         List<User> users = userService.getAllUsers();
+         return ResponseEntity.ok(users);
+     }
        
     
-    @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user){
-        User RegisteredUser = userService.RegisterUser(user);
-        return ResponseEntity.ok(RegisteredUser);
-    }
+    // @PostMapping("/register")
+    // public ResponseEntity<User> register(@RequestBody User user){
+    //     User RegisteredUser = userService.RegisterUser(user);
+    //     return ResponseEntity.ok(RegisteredUser);
+    // }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user)
