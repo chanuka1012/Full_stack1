@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo_Full_Stack_Project.fullstack.model.User;
 import com.example.demo_Full_Stack_Project.fullstack.repo.UserRepo;
 
 @Service
+@Transactional
 
 public class UserService {
 
@@ -35,6 +37,17 @@ public class UserService {
 
     public User updateUser(User user){
         return userRepo.save(user);
+    }
+
+    
+
+    public boolean deleteUser(User user) {
+        try {
+            userRepo.delete(user);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
