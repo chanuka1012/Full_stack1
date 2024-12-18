@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -54,6 +55,11 @@ public class UserController {
     public ResponseEntity<User> updateUser(@RequestBody User user){
         User UpdatedUser = userService.updateUser(user);
         return ResponseEntity.ok(UpdatedUser);
+    }
+
+    @DeleteMapping("/deleteUser")
+    public boolean deleteUser(@RequestBody User user){
+        return userService.deleteUser(user);
     }
 
 }
