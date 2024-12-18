@@ -15,7 +15,7 @@ import com.example.demo_Full_Stack_Project.fullstack.repo.UserRepo;
 public class UserService {
 
     @Autowired
-    private UserRepo userRepo;
+    private UserRepo userRepo; 
 
     public User RegisterUser(User user) {
         
