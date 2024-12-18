@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +48,12 @@ public class UserController {
         }
         return ResponseEntity.status(401).body("Invalid credentials");
 
+    }
+
+    @PutMapping("/updateUser")
+    public ResponseEntity<User> updateUser(@RequestBody User user){
+        User UpdatedUser = userService.updateUser(user);
+        return ResponseEntity.ok(UpdatedUser);
     }
 
 }

@@ -33,4 +33,8 @@ public class UserService {
         return null;
     }
 
+    public User updateUser(User user){
+        return userRepo.save(user);
+    }
+
 }
