@@ -17,7 +17,7 @@ import com.example.demo_Full_Stack_Project.fullstack.model.User;
 import com.example.demo_Full_Stack_Project.fullstack.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081") // Allow requests from React app
+@CrossOrigin(origins = "http://localhost:5173") // Allow requests from React app
 @RequestMapping("api/users")
 
 public class UserController {
