@@ -34,12 +34,13 @@ public class ExpenseService {
 
     
 
-    public boolean deleteExpense(Expense expense) {
-        try {
-            expenseRepo.delete(expense);
+    public boolean deleteExpenseById(String id) {
+        if (expenseRepo.existsById(id)) {
+            expenseRepo.deleteById(id);
             return true;
-        } catch (Exception e) {
+        } else {
             return false;
         }
     }
+    
 }

@@ -20,8 +20,10 @@ public class Expense {
     
     @Id
     private String id;
-    private String name;
     private double amount;
+    private String date;
     private String category;
+    private String description;
+    private String userId;
     
 }

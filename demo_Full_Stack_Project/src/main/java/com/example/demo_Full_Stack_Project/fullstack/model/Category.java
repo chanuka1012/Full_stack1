@@ -1,4 +1,4 @@
-package com.example.demo_Full_Stack_Project.fullstack.model;
+/*ackage com.example.demo_Full_Stack_Project.fullstack.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
