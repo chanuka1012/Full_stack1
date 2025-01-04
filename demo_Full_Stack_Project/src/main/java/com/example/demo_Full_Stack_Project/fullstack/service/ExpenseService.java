@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo_Full_Stack_Project.fullstack.model.Expense;
-import com.example.demo_Full_Stack_Project.fullstack.model.Income;
+
 import com.example.demo_Full_Stack_Project.fullstack.repo.ExpenseRepo;
 
 
