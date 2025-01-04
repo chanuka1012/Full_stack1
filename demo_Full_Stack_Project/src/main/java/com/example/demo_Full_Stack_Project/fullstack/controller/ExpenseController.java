@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo_Full_Stack_Project.fullstack.model.Expense;
-
+import com.example.demo_Full_Stack_Project.fullstack.model.Income;
 import com.example.demo_Full_Stack_Project.fullstack.service.ExpenseService;
 
 
@@ -43,11 +43,16 @@ public class ExpenseController {
      }
 
 
-    @PutMapping("/updateExpense")
-    public ResponseEntity<Expense> updateExpense(@RequestBody Expense expense){
-        Expense UpdatedUser = expenseService.updateExpense(expense);
-        return ResponseEntity.ok(UpdatedUser);
-    }
+    @PutMapping("/updateExpense/{id}")
+    public ResponseEntity<Expense> updateExpense(@PathVariable String id, @RequestBody Expense expense) {
+       Expense updatedExpense = expenseService.updateExpenseById(id, expense);
+       if (updatedExpense != null) {
+          return ResponseEntity.ok(updatedExpense);
+       } else {
+          return ResponseEntity.status(404).body(null); // Return 404 if income not found
+       }
+    } 
+
 
     @DeleteMapping("/deleteExpense/{id}")
 public ResponseEntity<String> deleteExpense(@PathVariable String id) {
