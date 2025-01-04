@@ -12,5 +12,5 @@ import com.example.demo_Full_Stack_Project.fullstack.model.Expense;
 public interface ExpenseRepo extends MongoRepository<Expense ,String>{
 
     List<Expense> findByUserId(String userId);
-
+                             
 }

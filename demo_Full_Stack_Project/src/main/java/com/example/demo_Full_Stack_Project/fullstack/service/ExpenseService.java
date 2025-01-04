@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo_Full_Stack_Project.fullstack.model.Expense;
-
+import com.example.demo_Full_Stack_Project.fullstack.model.Income;
 import com.example.demo_Full_Stack_Project.fullstack.repo.ExpenseRepo;
 
 
@@ -28,10 +28,14 @@ public class ExpenseService {
 		return expenseRepo.findAll();
 	}
 
-    public Expense updateExpense(Expense expense){
-        return expenseRepo.save(expense);
+    public Expense updateExpenseById(String id, Expense expense) {
+        if (expenseRepo.existsById(id)) {
+            expense.setId(id); // Ensure the correct ID is set
+            return expenseRepo.save(expense);
+        } else {
+            return null; // Return null if income doesn't exist
+        }
     }
-
     
 
     public boolean deleteExpenseById(String id) {
