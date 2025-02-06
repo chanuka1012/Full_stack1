@@ -38,6 +38,7 @@ public class ExpenseController {
     
      @PostMapping("/save")
      public ResponseEntity<Expense> save(@RequestBody Expense expense){
+        expense.setUserId("someUserId"); // You need to assign this dynamically
          Expense SavedExpense = expenseService.SaveExpense(expense);
          return ResponseEntity.ok(SavedExpense);
      }
