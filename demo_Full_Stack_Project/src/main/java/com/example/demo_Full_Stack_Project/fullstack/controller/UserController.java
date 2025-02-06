@@ -41,7 +41,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user)
-    {
+{
         User authenticatedUser = userService.authenticateUser(user.getEmail(), user.getPassword());
 
         if (authenticatedUser!=null){
