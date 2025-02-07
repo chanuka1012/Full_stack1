@@ -28,6 +28,11 @@ public class ExpenseService {
 		return expenseRepo.findAll();
 	}
 
+    public List<Expense> getExpensesByUserId(String userId) {
+        return expenseRepo.findByUserId(userId);
+    }
+    
+
     public Expense updateExpenseById(String id, Expense expense) {
         if (expenseRepo.existsById(id)) {
             expense.setId(id); // Ensure the correct ID is set
