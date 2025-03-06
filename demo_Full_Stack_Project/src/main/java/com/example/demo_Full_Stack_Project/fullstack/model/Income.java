@@ -20,5 +20,9 @@ public class Income {
     private String date;
     private String source;
     private String userId;
+    public String getCategory() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getCategory'");
+    }
 
 }

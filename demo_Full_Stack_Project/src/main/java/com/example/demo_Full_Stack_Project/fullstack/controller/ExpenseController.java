@@ -1,6 +1,7 @@
 package com.example.demo_Full_Stack_Project.fullstack.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,11 +36,12 @@ public class ExpenseController {
          return ResponseEntity.ok(expenses);
      }
 
-     @GetMapping("/{userId}")
-public ResponseEntity<List<Expense>> getExpensesByUserId(@PathVariable String userId) {
-    List<Expense> expenses = expenseService.getExpensesByUserId(userId);
-    return ResponseEntity.ok(expenses);
-}
+     @GetMapping("/report/category/{userId}/{startDate}/{endDate}")
+     public ResponseEntity<Map<String, Double>> generateExpenseReportByCategory(@PathVariable String userId,
+             @PathVariable String startDate, @PathVariable String endDate) {
+         Map<String, Double> categoryExpenses = expenseService.generateExpenseReportByCategory(userId, startDate, endDate);
+         return ResponseEntity.ok(categoryExpenses);
+     }
 
        
     

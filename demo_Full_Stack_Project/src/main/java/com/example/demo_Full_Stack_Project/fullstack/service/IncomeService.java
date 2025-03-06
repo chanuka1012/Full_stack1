@@ -1,6 +1,8 @@
 package com.example.demo_Full_Stack_Project.fullstack.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +27,17 @@ public class IncomeService {
         return incomeRepo.findAll();
     }
 
-    public List<Income> getIncomesByUserId(String userId){
-        return incomeRepo.findByUserId(userId);
+    public Map<String, Double> generateIncomeReportBySource(String userId, String startDate, String endDate) {
+        List<Income> incomes = incomeRepo.findByUserIdAndDateBetween(userId, startDate, endDate);
+
+        // Aggregate income by source
+        Map<String, Double> sourceIncome = new HashMap<>();
+        for (Income income : incomes) {
+            sourceIncome.put(income.getSource(), sourceIncome.getOrDefault(income.getSource(), 0.0) + income.getAmount());
+        }
+        return sourceIncome;
     }
+
 
     public Income updateIncomeById(String id, Income income) {
         if (incomeRepo.existsById(id)) {

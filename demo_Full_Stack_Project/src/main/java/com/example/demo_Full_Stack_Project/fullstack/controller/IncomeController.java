@@ -1,6 +1,7 @@
 package com.example.demo_Full_Stack_Project.fullstack.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,10 +34,11 @@ public class IncomeController {
         return ResponseEntity.ok(incomes);
     }
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<List<Income>>getIncomesByUserId(@PathVariable String userId){
-        List<Income> incomes=incomeService.getIncomesByUserId(userId);
-        return ResponseEntity.ok(incomes);
+    @GetMapping("/report/source/{userId}/{startDate}/{endDate}")
+    public ResponseEntity<Map<String, Double>> generateIncomeReportBySource(@PathVariable String userId,
+            @PathVariable String startDate, @PathVariable String endDate) {
+        Map<String, Double> sourceIncome = incomeService.generateIncomeReportBySource(userId, startDate, endDate);
+        return ResponseEntity.ok(sourceIncome);
     }
 
 

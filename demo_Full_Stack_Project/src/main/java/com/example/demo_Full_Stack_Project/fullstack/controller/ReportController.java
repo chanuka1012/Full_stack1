@@ -1,5 +1,7 @@
 package com.example.demo_Full_Stack_Project.fullstack.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,10 +21,10 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<Report> getReport(@PathVariable String userId) {
-        Report report = reportService.generateReport(userId);
-        return ResponseEntity.ok(report);
+    @GetMapping("/summary/{userId}/{startDate}/{endDate}")
+    public ResponseEntity<Map<String, Object>> generateReport(@PathVariable String userId,
+            @PathVariable String startDate, @PathVariable String endDate) {
+        Map<String, Object> reportData = reportService.generateReportByCategory(userId, startDate, endDate);
+        return ResponseEntity.ok(reportData);
     }
-
 }
