@@ -1,6 +1,8 @@
 package com.example.demo_Full_Stack_Project.fullstack.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,21 @@ public class ExpenseService {
 
     public List<Expense> getExpensesByUserId(String userId) {
         return expenseRepo.findByUserId(userId);
+    }
+
+    //public List<Expense> generateExpenseReport(String userId, String startDate, String endDate) {
+     //   return expenseRepo.findByUserIdAndDateBetween(userId, startDate, endDate);
+    //}
+
+    public Map<String, Double> generateExpenseReportByCategory(String userId, String startDate, String endDate) {
+        List<Expense> expenses = expenseRepo.findByUserIdAndDateBetween(userId, startDate, endDate);
+        
+        // Aggregate expenses by category
+        Map<String, Double> categoryExpenses = new HashMap<>();
+        for (Expense expense : expenses) {
+            categoryExpenses.put(expense.getCategory(), categoryExpenses.getOrDefault(expense.getCategory(), 0.0) + expense.getAmount());
+        }
+        return categoryExpenses;
     }
     
 
