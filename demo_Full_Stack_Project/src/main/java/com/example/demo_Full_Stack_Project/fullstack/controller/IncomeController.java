@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo_Full_Stack_Project.fullstack.model.Expense;
 import com.example.demo_Full_Stack_Project.fullstack.model.Income;
 import com.example.demo_Full_Stack_Project.fullstack.service.IncomeService;
 
@@ -31,6 +32,13 @@ public class IncomeController {
         List<Income> incomes=incomeService.getAllIncomes();
         return ResponseEntity.ok(incomes);
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Income>>getIncomesByUserId(@PathVariable String userId){
+        List<Income> incomes=incomeService.getIncomesByUserId(userId);
+        return ResponseEntity.ok(incomes);
+    }
+
 
     @PostMapping("/save")
     public ResponseEntity<Income>save(@RequestBody Income income){

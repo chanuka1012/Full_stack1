@@ -25,6 +25,10 @@ public class IncomeService {
         return incomeRepo.findAll();
     }
 
+    public List<Income> getIncomesByUserId(String userId){
+        return incomeRepo.findByUserId(userId);
+    }
+
     public Income updateIncomeById(String id, Income income) {
         if (incomeRepo.existsById(id)) {
             income.setId(id); // Ensure the correct ID is set

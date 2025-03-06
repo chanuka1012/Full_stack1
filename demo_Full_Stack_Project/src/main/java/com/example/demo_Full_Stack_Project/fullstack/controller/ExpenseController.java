@@ -34,11 +34,18 @@ public class ExpenseController {
          List<Expense> expenses = expenseService.getAllExpenses();
          return ResponseEntity.ok(expenses);
      }
+
+     @GetMapping("/{userId}")
+public ResponseEntity<List<Expense>> getExpensesByUserId(@PathVariable String userId) {
+    List<Expense> expenses = expenseService.getExpensesByUserId(userId);
+    return ResponseEntity.ok(expenses);
+}
+
        
     
      @PostMapping("/save")
      public ResponseEntity<Expense> save(@RequestBody Expense expense){
-        expense.setUserId("someUserId"); // You need to assign this dynamically
+        
          Expense SavedExpense = expenseService.SaveExpense(expense);
          return ResponseEntity.ok(SavedExpense);
      }
@@ -46,7 +53,7 @@ public class ExpenseController {
 
     @PutMapping("/updateExpense/{id}")
     public ResponseEntity<Expense> updateExpense(@PathVariable String id, @RequestBody Expense expense) {
-       Expense updatedExpense = expenseService.updateExpenseById(id, expense);
+       Expense updatedExpense = expenseService.updateExpenseById(id,  expense);
        if (updatedExpense != null) {
           return ResponseEntity.ok(updatedExpense);
        } else {
