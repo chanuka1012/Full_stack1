@@ -36,6 +36,7 @@ public class ExpenseController {
          return ResponseEntity.ok(expenses);
      }
 
+
      @GetMapping("/report/category/{userId}/{startDate}/{endDate}")
      public ResponseEntity<Map<String, Double>> generateExpenseReportByCategory(@PathVariable String userId,
              @PathVariable String startDate, @PathVariable String endDate) {
@@ -73,6 +74,15 @@ public ResponseEntity<String> deleteExpense(@PathVariable String id) {
         return ResponseEntity.status(404).body("Expense not found");
     }
 }
+
+@GetMapping("/user/{userId}")
+public ResponseEntity<List<Expense>> getExpensesByUserId(@PathVariable String userId) {
+    List<Expense> expenses = expenseService.getExpensesByUserId(userId);
+    return ResponseEntity.ok(expenses);
+}
+
+
+
 
 
 }
