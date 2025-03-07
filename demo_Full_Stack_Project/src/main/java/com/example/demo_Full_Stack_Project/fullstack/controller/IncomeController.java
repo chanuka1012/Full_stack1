@@ -69,4 +69,12 @@ public class IncomeController {
         }
     }
 
+    @GetMapping("/user/{userId}")
+public ResponseEntity<List<Income>> getIncomesByUserId(@PathVariable String userId) {
+    List<Income> incomes = incomeService.getIncomesByUserId(userId);
+    return ResponseEntity.ok(incomes);
+}
+
+
+    
 }

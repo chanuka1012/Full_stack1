@@ -30,9 +30,8 @@ public class ExpenseService {
 		return expenseRepo.findAll();
 	}
 
-    public List<Expense> getExpensesByUserId(String userId) {
-        return expenseRepo.findByUserId(userId);
-    }
+    
+    
 
     //public List<Expense> generateExpenseReport(String userId, String startDate, String endDate) {
      //   return expenseRepo.findByUserIdAndDateBetween(userId, startDate, endDate);
@@ -68,5 +67,12 @@ public class ExpenseService {
             return false;
         }
     }
+
+    public List<Expense> getExpensesByUserId(String userId) {
+        return expenseRepo.findByUserId(userId);
+    }
+    
+
+    
     
 }

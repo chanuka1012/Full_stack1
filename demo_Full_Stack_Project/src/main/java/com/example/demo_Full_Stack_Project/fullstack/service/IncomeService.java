@@ -58,4 +58,9 @@ public class IncomeService {
         }
     }
 
+    public List<Income> getIncomesByUserId(String userId) {
+        return incomeRepo.findByUserId(userId);
+    }
+    
+
 }
