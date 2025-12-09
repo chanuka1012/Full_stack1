@@ -7,21 +7,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "Users1")
+@Document(collection = "Students")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class User {
+public class Student {
 
     @Id
-    private String userId;
-    private String userName;
+    private String studentId;
+    private String studentName;
     private String email;
-    private String password;
-
-    //public String getPassword(){
-      //  return password;
-    //}
+    private String school;
+    private String className;
+    private String mobileNumber;
 
 }
+
+
